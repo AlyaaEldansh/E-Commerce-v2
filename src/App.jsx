@@ -34,7 +34,7 @@ let router = createBrowserRouter([
     {index:true , element:<ProdectedRoute><Home/></ProdectedRoute>},
     {path:'products' , element:<ProdectedRoute><Products/></ProdectedRoute>},
     {path:'cart' , element:<ProdectedRoute><Cart/></ProdectedRoute>},
-    // {path:'brands' , element:<ProdectedRoute><Brands/></ProdectedRoute>},
+    {path:'brands' , element:<ProdectedRoute><Brands/></ProdectedRoute>},
     {path:'categories' , element:<ProdectedRoute><Categories/></ProdectedRoute>},
     {path:'productdetails/:id/:category' , element:<ProdectedRoute><ProductDetails/></ProdectedRoute>},
     {path:'categorydetails/:id' , element:<ProdectedRoute><CategoryDetails/></ProdectedRoute>},

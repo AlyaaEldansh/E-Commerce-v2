@@ -29,7 +29,7 @@ export default function Navbar() {
           {/* <li className='text-lg mx-2 py-2 text-slate-900 font-light '><NavLink to={'/cart'}> Cart </NavLink></li> */}
           <li className='text-lg mx-2 py-2 text-slate-900 font-light '><NavLink to={'/products'}> Products </NavLink></li>
           <li className='text-lg mx-2 py-2 text-slate-900 font-light '><NavLink to={'/categories'}> Categories </NavLink></li>
-          {/* <li className='text-lg mx-2 py-2 text-slate-900 font-light '><NavLink to={'/brands'}> Brands </NavLink></li> */}
+          <li className='text-lg mx-2 py-2 text-slate-900 font-light '><NavLink to={'/brands'}> Brands </NavLink></li>
           </>:null}
           
         </ul>
