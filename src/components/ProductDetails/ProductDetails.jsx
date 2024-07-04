@@ -5,9 +5,15 @@ import { Link, useParams } from 'react-router-dom';
 import Slider from "react-slick";
 import { CartContext } from '../../Context/CartContext';
 import toast from 'react-hot-toast';
+import { WishListContext } from '../../Context/WishListContext';
+import {ClimbingBoxLoader} from 'react-spinners';
+
 
 export default function ProductDetails() {
   let {addToCart} = useContext(CartContext);
+  let {addToWishList} = useContext(WishListContext);
+  const [isLoading,setIsLoading] = useState(false);
+
 
   async function addProduct(productId)
   {
@@ -30,6 +36,27 @@ export default function ProductDetails() {
         });
       }
   };
+  async function addProductToWishList(productId)
+  {
+    let response = await addToWishList(productId);
+    
+    if(response.data.status === 'success')
+      {
+        // console.log('added');
+        toast.success('Product added successfully to your wishlist',{
+          duration:1500,
+          position:'bottom-left'
+        });
+      }
+      else
+      {
+        // console.log('error');
+        toast.error('Product did not add to your wishlist',{
+          duration:1500,
+          position:'bottom-left'
+        });
+      };
+  };
 
   let {id , category} = useParams();
     const [productDetails, setProductDetails] = useState(null);
@@ -45,11 +72,15 @@ export default function ProductDetails() {
 
     function getProductDetails(id)
     {
+      setIsLoading(true);
       axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
       .then(({data})=>{
         setProductDetails(data.data);
+        setIsLoading(false);
+
       })
       .catch((error)=>{
+        setIsLoading(false);
 
       });
     };
@@ -74,7 +105,10 @@ export default function ProductDetails() {
       getRelatedProduct(category);
     } , [id,category]);
   return <>
-   <div className="row">
+  {isLoading?<div className='py-8 w-full flex justify-center'>
+    <ClimbingBoxLoader color='green'/>
+  </div>
+    :<div><div className="row">
     <div className="w-1/4">
     <Slider {...settings}>
       {productDetails?.images.map((src)=> <img src={src} className='w-full' key={productDetails.id} alt={productDetails?.title} />
@@ -95,8 +129,9 @@ export default function ProductDetails() {
     
    <div className="row">
     {relatedProducts.map((product)=>
-      <div className='w-1/6 px-4 py-2' key={product.id}>
-      <div className="product border p-2">
+      <div className='sx:w-full md:w-3/6 lg:w-1/6 px-4 py-2' key={product.id}>
+      <div className="product border relative p-2">
+      <button className='hover:text-red-600 absolute top-5 right-5' onClick={()=>addProductToWishList(product.id)}><i className="fa-regular fa-heart"></i></button>
       <Link to={`/productdetails/${product.id}/${product.category.name}`}>
       <img src={product.imageCover} className='w-full' alt={product.title} />
       <span className='block font-light mt-2 text-green-600'>{product.category.name}</span>
@@ -110,6 +145,6 @@ export default function ProductDetails() {
       </div>
     </div>
     )}
-   </div>
+   </div></div>}
   </>
 }

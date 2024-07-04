@@ -31,7 +31,7 @@ export default function Categories() {
     <ClimbingBoxLoader color='green'/>
   </div>
     :<div className='row'>
-      {allCategories.map((category)=> <div className='w-1/4 px-4 py-2' key={category._id}>
+      {allCategories.map((category)=> <div className='sx:w-full md:w-2/4 lg:w-1/4 px-4 py-2' key={category._id}>
         <div className="product p-2">
         <Link to={`/categorydetails/${category._id}`}>
         <img src={category.image} className='w-full h-[300px]  rounded-full' alt={category.name} />

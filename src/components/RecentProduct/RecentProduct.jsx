@@ -85,7 +85,7 @@ export default function RecentProduct() {
     <ClimbingBoxLoader color='green'/>
   </div>
     :<div className='row overflow-hidden'>
-      {recentProducts.map((product)=> <div className='w-1/6 px-4 py-2' key={product.id}>
+      {recentProducts.map((product)=> <div className='sx:w-full md:w-3/6 lg:w-1/6 px-4 py-2' key={product.id}>
         <div className="product border p-2 relative">
         <button className='hover:text-red-600 absolute top-5 right-5' onClick={()=>addProductToWishList(product.id)}><i className="fa-regular fa-heart"></i></button>
         <Link to={`/productdetails/${product.id}/${product.category.name}`}>

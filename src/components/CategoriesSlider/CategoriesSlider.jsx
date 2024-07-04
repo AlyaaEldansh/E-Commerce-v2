@@ -9,7 +9,7 @@ export default function CategoriesSlider() {
       dots: false,
       infinite: true,
       speed: 1500,
-      slidesToShow: 8,
+      slidesToShow: 6,
       slidesToScroll: 3,
       autoplay:true
     };
@@ -35,7 +35,7 @@ export default function CategoriesSlider() {
     <Slider {...settings} className='overflow-hidden'>
       {categories.map((category)=> <div key={category._id}>
         <img className='category-img w-full' src={category.image} alt={category.title} />
-        <h3 className='font-light mt-2'>{category.name}</h3>
+        <h3 className='font-light mt-2 pl-4 text-center'>{category.name}</h3>
       </div>)}
       </Slider>
       </div>
