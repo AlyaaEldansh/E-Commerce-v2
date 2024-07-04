@@ -50,7 +50,7 @@ export default function Login() {
       onSubmit:handleLogin
     });
     return <>
-    <div className='max-w-xl mx-auto py-6'>
+    <div className='max-w-xl mx-auto px-6 py-6'>
     {apiError? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
         {apiError}
         </div>:null}
@@ -73,7 +73,7 @@ export default function Login() {
         {formik.errors.password}
         </div>:null}
         <div className='flex justify-between items-center'>
-        <button type="submit" className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+        <button type="submit" className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm sx:w-6/16  sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
           {isLoading? <i className='fas fa-spinner fa-spin'></i>:'Login'}
           </button>
           <p><span className='font-light text-sm'><Link className='text-green-600 hover:text-green-600 hover:underline' to={'/ForgetPassword'}>Forgetten password?</Link></span></p>

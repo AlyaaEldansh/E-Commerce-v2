@@ -97,7 +97,7 @@ export default function Register() {
     });
 
   return <>
-    <div className='max-w-xl mx-auto py-6'>
+    <div className='max-w-xl mx-auto px-6 py-6'>
     {apiError? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
         {apiError}
         </div>:null}
